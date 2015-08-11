@@ -5,17 +5,17 @@ from arm_v2.procedure import *
 
 env.shell = '/bin/sh -c'
 env.abort_on_prompts = False
-env.folder = system['project'].format(env.ROOT_PATH, env.ALIAS)
 
-print 'Alias: {0}\nBranch: {1}\n'.format(env.ALIAS, env.BRANCH)
 
-@task
-def test():
-    print env
+def set():
+    env.folder = system['project'].format(env.ROOT_PATH, env.ALIAS)
+    print 'Alias: {0}\nBranch: {1}\n'.format(env.ALIAS, env.BRANCH)
 
 @task
 def delete():
     """Delete ARM"""
+    set()
+
     if not has_space(env.ALIAS):
         print messages['nothing']
         return False
@@ -27,6 +27,8 @@ def delete():
 @task
 def update():
     """Create or update ARM"""
+    set()
+
     if has_space(env.ALIAS):
         print messages['nothing']
         checkout_repo(env.REPO)
