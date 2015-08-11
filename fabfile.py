@@ -7,14 +7,15 @@ env.shell = '/bin/sh -c'
 env.abort_on_prompts = False
 
 
-def set():
+def init():
     env.folder = system['project'].format(env.ROOT_PATH, env.ALIAS)
     print 'Alias: {0}\nBranch: {1}\n'.format(env.ALIAS, env.BRANCH)
+
 
 @task
 def delete():
     """Delete ARM"""
-    set()
+    init()
 
     if not has_space(env.ALIAS):
         print messages['nothing']
@@ -27,7 +28,7 @@ def delete():
 @task
 def update():
     """Create or update ARM"""
-    set()
+    init()
 
     if has_space(env.ALIAS):
         print messages['nothing']
