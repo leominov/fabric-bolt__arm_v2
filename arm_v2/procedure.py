@@ -36,7 +36,7 @@ def checkout_repo(branch):
         run(git['pull'])
         run(git['checkout'].format(branch))
         run(git['commit_file'])
-        vendor_install(env.folder)
+        vendor_install()
 
 
 def clone_repo(repo, branch):
