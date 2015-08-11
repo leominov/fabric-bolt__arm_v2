@@ -31,7 +31,7 @@ def update():
 
     if has_space(env.ALIAS):
         print messages['nothing']
-        checkout_repo(env.REPO)
+        checkout_repo(env.BRANCH)
     else:
         # Make folder
         run(system['md'].format(env.folder))
