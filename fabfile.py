@@ -3,8 +3,6 @@ from arm_v2.params import yii2, system
 from arm_v2.language import messages
 from arm_v2.procedure import *
 
-env.shell = '/bin/bash -c'
-
 
 def init():
     env.folder = system['project'].format(env.ROOT_PATH, env.ALIAS)
